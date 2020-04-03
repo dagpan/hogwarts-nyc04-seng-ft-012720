@@ -1,3 +1,4 @@
+
 .App {
   margin: 0% 5% 0% 5%;
   text-align: center;
@@ -148,4 +149,13 @@ ul {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.my.bottom {
+  border-top: 2px transparent;
+}
+
+.my.bottom.visible {
+  border-top: 2px solid rgb(177, 177, 236);
+  vertical-align: middle;
 }

@@ -50,37 +50,52 @@ class HogCard extends Component {
       return Math.floor(Math.random() * Math.floor(max))
     }
    
+
+
     return (
            <div className="card">
-             <div className="image">
-               <img src={imageHog} alt={name}/>
-             </div>
-             <div className="content">
-               <div className="center aligned header">
-                 <h2 className="hogname">{name}</h2>
+             <div className="ui slide up reveal div">
+               <div className="visible content">
+                 <img src={imageHog} alt={name} className="ui fluid image"/>
                </div>
-               <div className="center aligned meta">
-                  <span className="hoggy">Hoggy Star</span>
+               <div className="hidden content">
+                 <div className="image">
+                   <img className="ui small circular image" src={imageHog} alt={name}/>
+                 </div>
+                 <div className="my bottom"></div>
+                 <div className="content">
+                   <div className="center aligned header">
+                     <h2 className="hogname">{name}</h2>
+                   </div>
+                   <div className="center aligned meta">
+                     <span className="hoggy">Hoggy Star</span>
+                   </div>
+                   <div className="my bottom"></div>
+                   <div className="center aligned description">
+                     <span className="hoggyText">
+                        {specialty}
+                     </span>
+                   </div>
+                   <div className="my bottom"></div>
+                   <div className="center aligned description">
+                     <span className="hoggyText">
+                        Weighs probably {roundedweight} kg
+                     </span>
+                   </div>
+                 </div>
+                 <div className="my bottom"></div>
+                 <div className="extra content">
+                   <div className="my bottom visible"></div>
+                   <div className="my bottom"></div>
+                     <span className="right floated">
+                        Won in 201{randYear}
+                     </span>
+                     <span className="left floated" style={{color: 'gold'}}>
+                       <i className="star icon"></i>
+                        {medal}
+                     </span>
+                 </div>
                </div>
-               <div className="center aligned description">
-                  <span className="hoggyText">
-                    {specialty}
-                  </span>
-               </div>
-               <div className="center aligned description">
-                  <span className="hoggyText">
-                    Weighs {roundedweight} probably lb
-                  </span>
-               </div>
-             </div>
-             <div className="extra content">
-               <span className="right floated">
-                 Won in 201{randYear}
-               </span>
-               <span className="left floated" style={{color: 'gold'}}>
-                  <i className="star icon"></i>
-                   {medal}
-               </span>
              </div>
            </div>
     )

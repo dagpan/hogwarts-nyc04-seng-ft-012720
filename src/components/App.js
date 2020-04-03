@@ -8,7 +8,7 @@ import HelloWorld from './HelloWorld'
 let filterOnOff = false
 let sortNameOnOff = false
 let sortWeightOnOff = false
-
+let hiddenArray = []
 
 class App extends Component {
  
@@ -30,6 +30,25 @@ class App extends Component {
                hogs: hogs
           })
       }
+  }
+
+  hideHogs = (hogNamesArray) => {
+    
+    if (hogNamesArray.length > 0) {
+        hogNamesArray.forEach(element => {
+                let hiddenHog = this.state.hogs.filter((hog) => {
+                            return hog.name !== element
+                })
+                hiddenArray.push(hiddenHog)
+        })
+        this.setState({
+             hogs: hiddenArray
+        })
+    } else {
+        this.setState({
+             hogs: hogs
+        })
+    }
   }
 
   sortHogsName = () => {
@@ -90,7 +109,8 @@ class App extends Component {
         <Nav />
         <HelloWorld filterHogs={this.filterHogs}
                     sortHogsName={this.sortHogsName}
-                    sortHogsWeight={this.sortHogsWeight} />
+                    sortHogsWeight={this.sortHogsWeight}
+                    hideHogs={this.hideHogs} />
         <HogContainer hogs={this.state.hogs}
                     />
       </div>
