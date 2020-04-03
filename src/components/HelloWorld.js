@@ -2,8 +2,6 @@ import React, { Fragment } from "react";
 import HogContainer from './HogContainer'
 
 
-
-
 class HelloWorld extends React.Component {
 
   handleFilter = (ev) => {
@@ -19,10 +17,9 @@ class HelloWorld extends React.Component {
   }
 
   handleInputs = (ev) => {
-    let hogNamesArray = []
-    hogNamesArray.push(ev.target.value)
+    console.log(ev.target.name)
     console.log(ev.target.value)
-    this.props.hideHogs(hogNamesArray)
+    this.props.hideHogs(ev.target.value)
   }
 
   render() {
@@ -30,7 +27,7 @@ class HelloWorld extends React.Component {
     <div>
       <h1 className="smallHeader">Hello World, Here Are Your Options</h1>
       <h4> </h4>
-          <select name="names" multiple="" className="ui fluid dropdown" onChange={this.handleInputs}>
+          <select name="names" multiple="" className="ui simple dropdown" onChange={this.handleInputs}>
             <option value="">Select The Hoggies You Want To Hide</option>
             <option value="Mudblood">Mudblood</option>
             <option value="Porkchop">Porkchop</option>

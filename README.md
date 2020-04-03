@@ -11,7 +11,7 @@
 <!-- * sort the hogs based on name
 * sort the hogs based on weight  -->
 
-* BONUS: allow users to hide hogs (not delete them, just hide them from view!)
+<!-- * BONUS: allow users to hide hogs (not delete them, just hide them from view!) -->
 * BONUS: bring in pig gifs from an API
 <!-- * BONUS: implement [Semantic Cards](https://semantic-ui.com/views/card.html) for each hog -->
 
