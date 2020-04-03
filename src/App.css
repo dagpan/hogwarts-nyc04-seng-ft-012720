@@ -35,7 +35,13 @@
 .smallHeader {
   font-size: 1.75em;
   font-weight: bold;
-  color: #3B0B0B;
+  color: rgb(101, 23, 190);
+}
+
+.smalls {
+  font-size: 1.5em;
+  font-weight: bolder; 
+  color: rgb(71, 15, 134);
 }
 
 .normalText {
@@ -47,8 +53,13 @@
   font-size: 1.5em;
 }
 
+.hoggy {
+  color: rgb(212, 71, 212);
+}
+
+
 .achievementText {
-  color: purple;
+  color: rgb(231, 228, 73);
 }
 
 ul {
@@ -102,7 +113,7 @@ ul {
   opacity: 0.75;
 }
 
-.pigTile h3 {
+.hogname {
   color: #FBB;
 }
 .minPigTile {
