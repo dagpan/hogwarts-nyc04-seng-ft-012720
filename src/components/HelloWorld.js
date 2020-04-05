@@ -1,8 +1,12 @@
-import React, { Fragment } from "react";
-import HogContainer from './HogContainer'
+import React from "react";
+import HogSelectionContainer from './HogSelectionContainer'
 
 
 class HelloWorld extends React.Component {
+
+  state = {
+     hiddenHogs: []
+  }
 
   handleFilter = (ev) => {
     this.props.filterHogs()
@@ -17,32 +21,41 @@ class HelloWorld extends React.Component {
   }
 
   handleInputs = (ev) => {
-    console.log(ev.target.name)
-    console.log(ev.target.value)
-    this.props.hideHogs(ev.target.value)
+         this.props.hogs.forEach(hog => {
+              if (ev.currentTarget.dataset.id === hog.name) {
+                  if (hog.hidden) {
+                      hog.hidden = false
+                  } else {
+                      hog.hidden = true
+                  }
+              }
+         })
+         this.setState({
+              hiddenHogs: this.props.hogs
+         })
   }
 
+  handleHide = (ev) => {
+    this.props.hideHogs(this.state)
+  }
+ 
   render() {
+    
     return (
     <div>
       <h1 className="smallHeader">Hello World, Here Are Your Options</h1>
-      <h4> </h4>
-          <select name="names" multiple="" className="ui simple dropdown" onChange={this.handleInputs}>
-            <option value="">Select The Hoggies You Want To Hide</option>
-            <option value="Mudblood">Mudblood</option>
-            <option value="Porkchop">Porkchop</option>
-            <option value="Cherub">Cherub</option>
-            <option value="Piggy smalls">Piggy smalls</option>
-            <option value="Trouble">Trouble</option>
-            <option value="Sobriety">Sobriety</option>
-            <option value="Rainbowdash">Rainbowdash</option>
-            <option value="TruffleShuffle">TruffleShuffle</option>
-            <option value="Bay of Pigs">Bay of Pigs</option>
-            <option value="The Prosciutto Concern">The Prosciutto Concern</option>
-            <option value="Galaxy Note">Galaxy Note</option>
-            <option value="Leggo My Eggo">Leggo My Eggo</option>
-            <option value="Augustus Gloop">Augustus Gloop</option>
-          </select>
+      <h4>Select The Hoggies You Want To Hide</h4>
+                <HogSelectionContainer hogs={this.props.hogs}
+                                       handleInputs={this.handleInputs} 
+                                        />
+      <div className="ui labeled button" tabIndex="0">
+          <div className="ui orange button" onClick={this.handleHide}>
+              <i className="filter icon"></i> Hide/UnHide
+          </div>
+          <a className="ui basic orange left pointing label">
+           hide the hogs you selected
+          </a>
+      </div>
       <h4> </h4>
         <div className="ui labeled button" tabIndex="0">
           <div className="ui pink button" onClick={this.handleFilter}>

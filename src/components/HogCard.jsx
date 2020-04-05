@@ -37,11 +37,11 @@ class HogCard extends Component {
   
 
   render() {
+    console.log(this.props.hog)
     const name = this.props.hog.name
     const specialty = this.props.hog.specialty
     const weight = this.props.hog.weight
     const roundedweight = Math.round(weight * 100)
-    const greased = this.props.hog.greased
     const medal = this.props.hog['highest medal achieved']
     const imageHog = imageMap[this.props.hog.name]
     const randYear = getRandomInt(10)

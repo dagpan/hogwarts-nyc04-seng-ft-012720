@@ -10,12 +10,14 @@ let sortNameOnOff = false
 let sortWeightOnOff = false
 let hideHogsOnOff = false
 
+hogs.forEach(hog => {hog["hidden"] = false})
+
 class App extends Component {
  
   state = {
     hogs: hogs
   }
-
+  
   filterHogs = () => {
       filterOnOff = !filterOnOff
       if (filterOnOff) {
@@ -32,29 +34,23 @@ class App extends Component {
       }
   }
 
-  hideHogs = (hogName) => {
+  hideHogs = (arrayData) => {
+      let hiddenArray = arrayData.hiddenHogs
       hideHogsOnOff = !hideHogsOnOff
       if (hideHogsOnOff) {
-          if (hogName !== 'Select The Hoggies You Want To Hide') {
-              let filteredArray = this.state.hogs.filter((hog) => {
-                              return hog.name !== hogName
-              })
-              this.setState({
-                  hogs: filteredArray
-              })
-            } else {
-              this.setState({
-                hogs: hogs
-              })
-            }
-      } else {
-          this.setState({
-               hogs: hogs
-          })
-      }
+        let showHiddenArray = hiddenArray.filter((hog) => {
+                            return hog.hidden !== true
+        })
+        this.setState({
+             hogs: showHiddenArray
+        })
+    } else {
+        this.setState({
+             hogs: hogs
+        })
+    }
   }
   
-
   sortHogsName = () => {
        sortNameOnOff = !sortNameOnOff
        function compare(a, b) {
@@ -108,13 +104,16 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
         <Nav />
         <HelloWorld filterHogs={this.filterHogs}
                     sortHogsName={this.sortHogsName}
                     sortHogsWeight={this.sortHogsWeight}
-                    hideHogs={this.hideHogs} />
+                    hideHogs={this.hideHogs} 
+                    hogs={this.state.hogs}
+                    />
         <HogContainer hogs={this.state.hogs}
                     />
       </div>

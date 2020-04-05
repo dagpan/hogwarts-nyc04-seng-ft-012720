@@ -2,7 +2,6 @@ import React from 'react';
 import HogCard from './HogCard'
 
 const HogContainer = (props) => {
-  console.log(props)
 
   let hogsArray = props.hogs.map((oneHog) => {
     return <HogCard
@@ -10,7 +9,7 @@ const HogContainer = (props) => {
       hog={oneHog}
     />
   })
-  
+
   return(
       <div className="ui link cards">
         {hogsArray}
